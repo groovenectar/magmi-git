@@ -67,14 +67,14 @@ class Magmi_ProductImport_DataPump
             $this->_engine->initAttrInfos($this->_importcolumns);
         }
         $res = $this->_engine->processDataSourceLine($item, $this->_rstep, $this->_stats["tstart"], 
-            $this->_stats["tdiff"], $this->_stats["lastdbtime"], $this->stats["lastrec"]);
+            $this->_stats["tdiff"], $this->_stats["lastdbtime"], $this->_stats["lastrec"]);
         return $res;
     }
 
     public function endImportSession()
     {
         $this->_engine->reportStats($this->_engine->getCurrentRow(), $this->_stats["tstart"], $this->_stats["tdiff"], 
-            $this->_stats["lastdbtime"], $this->stats["lastrec"]);
+            $this->_stats["lastdbtime"], $this->_stats["lastrec"]);
         $skustats = $this->_engine->getSkuStats();
         $this->_engine->log("Skus imported OK:" . $skustats["ok"] . "/" . $skustats["nsku"], "info");
         if ($skustats["ko"] > 0)
